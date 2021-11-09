@@ -14,7 +14,7 @@ let html = '';
 const container = document.querySelector('.fl-container')
 const listNr = [];
 const listNrRemember = [];
-let timerScelto = 6;
+let timerScelto = 30;
 let pausa = 1;
 let counter = 0;
 
