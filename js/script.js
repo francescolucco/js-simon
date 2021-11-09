@@ -16,6 +16,7 @@ const listNr = [];
 const listNrRemember = [];
 let timerScelto = 6;
 let pausa = 1;
+let counter = 0;
 
 for(let i = 0; i < 5; i++){
   let nR = numRandom (1, 100);
@@ -63,13 +64,36 @@ setTimeout (function() {
   setTimeout(() => {
     for (let i = 0; i < 5; i++) {
       const nRemember = parseInt(prompt('Inserisci un numero che ricordi:'));
-      listNrRemember.push(nRemember) 
       if((isNaN(nRemember)) || (nRemember < 1 || nRemember > 100)) {
-        alert('inserisci un numero valido compreso tra 1 e 100')
+        alert('Inserisci un numero valido compreso tra 1 e 100')
+        i--;
+      }else if(listNrRemember.includes(nRemember)){
+        alert('Hai già inserito questo numero. Inseriscine uno nuovo');
         i--;
       }
+      listNrRemember.push(nRemember);
+      console.log('i numeri che ricordo sono:', listNrRemember);
     }
+    for(let number of listNrRemember){
+      if(listNr.includes(number)){
+        counter++;
+        console.log(counter);
+      }
+    }
+    if(counter == 5){
+    html = 
+    `
+    <h3>Complimenti! HAI VINTO!</h3>
+    `
+    }else{
+    html = 
+    `
+    <h3>Hai indovinato ${counter} numeri!</h3>
+    `
+    }
+    container.innerHTML = html;
   }, 1000) 
 }, timerScelto * 1000);
+
 
 
